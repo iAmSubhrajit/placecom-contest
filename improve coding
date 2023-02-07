@@ -1,0 +1,97 @@
+
+import java.io.*; // for handling input/output
+
+import java.util.*; // contains Collections framework
+
+
+ 
+
+// don't change the name of this class
+
+// you can add inner classes if needed
+
+class Main {
+
+    public static void main (String[] args) {
+
+        // Your code here
+
+         Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+
+            String num = sc.next();
+
+            String ans = "";
+
+            if(Long.parseLong(num) == 0) {
+
+                System.out.println("red");
+
+            }
+
+            else {
+
+                ArrayList<String> li = new ArrayList<>();
+
+                permute(num, ans, li);
+
+                if(li.size() > 0) {
+
+                    System.out.println("red");
+
+                }
+
+                else {
+
+                    System.out.println("cyan");
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+ 
+
+    public static void permute(String num, String ans, ArrayList<String> li) {
+
+        if(num.length() == 0) {
+
+            Long res = Long.parseLong(ans);
+
+            if(res % 60 == 0) {
+
+                li.add(ans);
+
+            }
+
+            return;
+
+        }
+
+        for(int i = 0; i < num.length(); i++) {
+
+            char ch = num.charAt(i);
+
+            String left = num.substring(0, i);
+
+            String right = num.substring(i+1);
+
+            String rest = left + right;
+
+            permute(rest, ans + ch, li);
+
+        }
+
+
+ 
+
+    }
+
+}
