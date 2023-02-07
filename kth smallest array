@@ -1,0 +1,63 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args)throws IOException {
+        BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(sc.readLine());
+        for(int j = 0; j < t; j++) {
+            String s[] = sc.readLine().split(" ");
+            int n = Integer.parseInt(s[0]);
+            int k = Integer.parseInt(s[1]);
+            int arr[] = new int[n];
+            s = sc.readLine().split(" ");
+            for(int i = 0; i < n; i++) {
+                arr[i] = Integer.parseInt(s[i]);
+            }
+
+            int result[] = Merge(arr, 0, n-1);
+            System.out.println(result[k-1]);
+        }
+    }
+    public static int[] Merge(int arr[], int lo, int hi) {
+        if(lo == hi) {
+            int ba[] = new int[1];
+            ba[0] = arr[lo];
+            return ba;
+        }
+        int mid = (lo + hi)/2;
+        int left[] = Merge(arr, lo, mid);
+        int right[] = Merge(arr, mid+1, hi);
+        int result[] = Sort(left,right);
+        return result;
+    }
+    public static int[] Sort(int left[], int right[]) {
+        int result[] = new int[left.length + right.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while(i < left.length && j < right.length) {
+            if(left[i] <= right[j]) {
+                result[k++] = left[i];
+                i++;
+            }
+            else {
+                result[k++] = right[j];
+                j++;
+            }
+        }
+
+        while(i < left.length) {
+            result[k++] = left[i];
+            i++;
+        }
+
+        while(j < right.length) {
+            result[k++] = right[j];
+            j++;
+        }
+        return result;
+    }
+}
