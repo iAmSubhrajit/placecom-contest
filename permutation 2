@@ -1,0 +1,79 @@
+import java.io.*; // for handling input/output
+
+import java.util.*; // contains Collections framework
+
+ 
+
+// don't change the name of this class
+
+// you can add inner classes if needed
+
+class Main {
+
+   public static void main (String[] args) {
+
+       Scanner st = new Scanner(System.in);
+
+       String s = st.next();
+
+       ArrayList<String> list = new ArrayList<>();
+
+       StringBuilder sb = new StringBuilder(s);
+
+       generate(sb,0,s.length()-1,list);
+
+       Collections.sort(list);
+
+       HashSet<String> set = new HashSet<>();
+
+       for(String se : list) {
+
+           if(set.contains(se)) continue;
+
+           System.out.print(se+" ");
+
+           set.add(se);
+
+       }
+
+       // Your code here
+
+   }
+
+   static void generate(StringBuilder sb, int s, int e, ArrayList<String> list){
+
+       if(s==e){
+
+           list.add(sb.toString());
+
+           return;
+
+ 
+
+       }
+
+       for(int i=s; i<=e; i++){
+
+           swap(sb,s,i);
+
+           generate(sb,s+1,e,list);
+
+           swap(sb,s,i);
+
+ 
+
+       }
+
+   }
+
+   static void swap(StringBuilder sb, int i, int j){
+
+       char ch = sb.charAt(i);
+
+       sb.setCharAt(i, sb.charAt(j));
+
+       sb.setCharAt(j,ch);
+
+   }
+
+}
