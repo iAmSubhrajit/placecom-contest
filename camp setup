@@ -1,0 +1,23 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+            Scanner sc = new Scanner(System.in);
+			int n= sc.nextInt();
+			int X[]= new int[n];
+			int Y[]= new int[n];
+			for(int i=0;i<n;i++)
+			{
+                X[i]=sc.nextInt();
+				Y[i]=sc.nextInt();
+
+			}
+			
+	Arrays.sort(X);
+	Arrays.sort(Y);
+	System.out.print(X[(n-1)/2] + " " + Y[(n-1)/2]);
+	}
+}
