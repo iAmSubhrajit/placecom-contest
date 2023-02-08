@@ -1,0 +1,63 @@
+// Birthday Gift (Contest)
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static int[][] rightRotation(int a[][], int n){
+        int b[][] = new int[n][n];
+        for(int i=0, q=0; i<n; i++, q++){
+            for(int j=0, p=n-1; j<n; j++, p--){
+                b[i][j] = a[p][q];
+            }
+        }
+        return b;
+    }
+
+    static int[][] leftRotation(int a[][], int n){
+        int b[][] = new int[n][n];
+        for(int i=0, q=n-1; i<n; i++, q--){
+            for(int j=0, p=0; j<n; j++, p++){
+                b[i][j] = a[p][q];
+            }
+        }
+        return b;
+    }
+
+    public static void main(String[] args) {
+        // int a[][] = {
+        //         {1, 2, 3, 4,},
+        //         {5, 6, 7, 8,},
+        //         {9, 10, 11, 12,},
+        //         {13, 14, 15, 16,},
+        // };
+        // int n = a.length;
+        // String str = "LRL";
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0; i<n; i++)
+            for(int j=0; j<n; j++)
+                a[i][j] = sc.nextInt();
+        
+        sc.nextLine();
+        String str = sc.nextLine();
+
+        for(int i=0; i<3; i++){
+            if(str.charAt(i) == 'L')
+                a = leftRotation(a, n);
+            else
+                a = rightRotation(a, n);
+        }
+        
+        //Print Resultant Matrix
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++)
+                System.out.print(a[i][j] + " ");
+            System.out.println();
+        }
+    }
+}
