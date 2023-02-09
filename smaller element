@@ -1,0 +1,24 @@
+static int smallerElements(int a[], int n, int k){
+        //Enter your code here
+        int left =0;
+        int right = n-1;
+        int count =0;
+        while(left<=right){
+                int mid=(right+left)/2;
+                if(a[mid]<=k){
+                        count = mid+1;
+                        left=mid+1;
+                }
+                else
+                        right=mid-1;
+                
+        }
+        return count;
+}
+
+//public static void main(String[] args){
+        //int a[]={1,2,4,11,11,16};
+        //int k=11;
+        //int n=a.length;
+        //System.out.println(binarySearchCount(a,n,k));
+//}
