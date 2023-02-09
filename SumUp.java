@@ -9,30 +9,23 @@ Output
 Print the sum of even divisors.
   
   
-  import java.io.*; // for handling input/output
-import java.util.*; // contains Collections framework
+import java.io.*;
 
-// don't change the name of this class
-// you can add inner classes if needed
 class Main {
-   
+    public static void main (String[] args) throws IOException {
+        BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+        String[] input = sc.readLine().split(" ");
+        int a = Integer.parseInt(input[0]);
+        int b = Integer.parseInt(input[1]);
 
-    public static void main (String[] args) {
-        BufferReader sc = new BufferReader(new InputStreamReader(System.in));
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-
-        int sum = 0 ;
-
-        for(int i=a; i <= b; i++){
-            for(int j = i; j > 1; j= j/2 ){
-               if(j % 2 == 0){
-                if( i % j == 0 ){
-                    sum += j;
-                }
-               }
+        long sum = 0;
+       for(int i=a; i <= b; i++){
+        int temp=i;
+        while(temp%2==0){
+            sum += temp;
+            temp /=2;
+        }
             }
-        }   
-        System.out.println(sum);
+    System.out.println(sum);
     }
 }
