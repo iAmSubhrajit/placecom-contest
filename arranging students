@@ -1,0 +1,74 @@
+import java.io.*; // for handling input/output
+
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+
+// you can add inner classes if needed
+
+class Main {
+
+    public static void main (String[] args) {
+
+        // Your code here
+
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+
+ 
+
+        for (int i = 0; i < t; i++) {
+
+            int n = sc.nextInt();
+
+            int[] heights = new int[n];
+
+            for (int j = 0; j < n; j++) {
+
+                heights[j] = sc.nextInt();
+
+            }
+
+            int copy[] = new int[n];
+
+            int k = 0;
+
+            for(int h : heights) {
+
+                copy[k++] = h;
+
+            }
+
+            Arrays.sort(copy);
+
+            // check if the heights can be arranged in increasing order with one swap
+
+            int canArrange = 0;
+
+            for (int j = 0; j < n; j++) {
+
+                if (heights[j] != copy[j]) {
+
+                    canArrange++;
+
+                }
+
+            }
+
+            if(canArrange > 2) {
+
+                System.out.println("NO");
+
+            }
+
+            else
+
+            System.out.println("YES");
+
+        }
+
+    }
+
+}
