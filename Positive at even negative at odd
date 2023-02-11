@@ -1,0 +1,111 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+
+class Main {
+
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int pos = 0;
+        int neg = 0;
+        for(int i : arr) {
+            if(i > 0) pos++;
+            else neg++;
+        }
+        int negative[] = new int[neg];
+        int positive[] = new int[pos];
+        int i = 0; 
+        int j = 0;
+        for(int k : arr) {
+            if(k > 0) {
+                positive[i++] = k;
+            }
+            else {
+                negative[j++] = k;
+            }
+        } 
+
+        int res[] = new int[n];
+
+        if(neg == pos){
+
+            i = 0;
+
+            for(int k = 0; k < neg; k++) {
+
+                res[i] = negative[k];
+
+                 i = i + 2;
+
+            }
+
+            i = 1;
+
+            for(int k = 0; k < pos; k++) {
+
+                res[i] = positive[k];
+
+                i = i + 2;
+
+            }
+
+        }
+
+        if(pos > neg) {
+
+            i = 0;
+
+            for(int k = 0; k < neg; k++) {
+
+                res[i] = negative[k];
+
+                i = i + 2;
+
+            }
+
+            i = 1;
+
+            for(int k = 0; k < neg; k++) {
+
+                res[i] = positive[k];
+
+                i = i + 2;
+
+            }
+
+            i = i - 1;
+
+            for(int k = neg; k < pos; k++) {
+
+                res[i++] = positive[k];
+            }
+        }
+
+        if(pos < neg) {
+            i = 1;
+            for(int k = 0; k < pos; k++) {
+                res[i] = positive[k];
+                i = i + 2;
+            }
+            i = 0;
+            for(int k = 0; k < pos; k++) {
+                res[i] = negative[k];
+                i += 2;
+            }
+            for(int k = pos; k < neg; k++) {
+
+                res[i++] = negative[k]; 
+            }
+        }
+        for(int k : res) {
+            System.out.print(k + " ");
+        }
+    }
+}
