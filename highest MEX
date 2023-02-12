@@ -1,0 +1,30 @@
+#include <bits/stdc++.h> // header file includes every Standard library
+using namespace std;
+
+int main() {
+	// Your code here
+    long long t;
+    cin>>t;
+    while(t--){
+        long long n,k;
+        cin>>n>>k;
+        unordered_set<long long>st;
+        for(long long i=0;i<n;i++){
+            long long x;
+            cin>>x;
+            st.insert(x);
+        }
+        for(long long i=0;i<INT_MAX;i++){
+            if(st.find(i)==st.end()){
+                if(k==0){
+                    cout<<i<<endl;
+                    break;
+                }
+                else{
+                    k--;
+                }
+            }
+        }
+    }
+    return 0;
+}
